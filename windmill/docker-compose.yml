@@ -16,7 +16,8 @@ services:
       timeout: 5s
       retries: 5
   windmill:
-    build: .
+    image: wmill:v3
+    # build: .
     restart: always
     ports:
       - "8000:8000"
