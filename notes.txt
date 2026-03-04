@@ -1,0 +1,5 @@
+docker build -t windmill:v0303 .
+
+prisma_scan windmill:v0303 result.txt
+
+docker run -it --entrypoint /bin/bash windmill:v0303

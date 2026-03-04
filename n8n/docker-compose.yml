@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  n8n:
+    image: n8nio/n8n:nightly #2.8.1 #harbor-devops.devpos-hv.icsd.tsmc.com/base-prod/pled/oss/dockerhub/n8n:stable
+    restart: always
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_HOST=${N8N_HOST:-localhost}
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - WEBHOOK_URL=${WEBHOOK_URL:-http://localhost:5678/}
+      - GENERIC_TIMEZONE=${GENERIC_TIMEZONE:-Asia/Taipei}
+      - TZ=${TZ:-Asia/Taipei}
+      - N8N_LISTEN_ADDRESS=0.0.0.0
+    volumes:
+      - ~/.n8n:/home/node/.n8n

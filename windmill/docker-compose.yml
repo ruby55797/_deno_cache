@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: windmill
+      POSTGRES_USER: windmill
+      POSTGRES_PASSWORD: 1qaz@WSX3edc
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U windmill -d windmill"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  windmill:
+    build: .
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://windmill:1qaz@WSX3edc@database:5432/windmill
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - windmill_data:/data
+    depends_on:
+      - database
+
+volumes:
+  db_data:
+  windmill_data:
