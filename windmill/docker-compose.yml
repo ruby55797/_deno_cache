@@ -16,8 +16,8 @@ services:
       timeout: 5s
       retries: 5
   windmill:
-    image: wmill:v3
-    # build: .
+    image: wmill:v3 # need to build image (docker build) first
+    # build: . # find local Dockerfile automatically
     restart: always
     ports:
       - "8000:8000"

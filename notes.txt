@@ -3,3 +3,17 @@ docker build -t windmill:v0303 .
 prisma_scan windmill:v0303 result.txt
 
 docker run -it --entrypoint /bin/bash windmill:v0303
+
+
+
+###############
+
+https://github.com/windmill-labs/windmill
+
+https://www.windmill.dev/docs/advanced/dependencies_in_typescript
+
+https://www.windmill.dev/docs/advanced/dependencies_in_typescript#lockfile-per-script-inferred-from-imports-standard
+Sharing common logic with relative imports when not using bundles
+
+https://www.windmill.dev/docs/advanced/dependencies_in_typescript#private-npm-registry--private-npm-packages
+Private npm registry & private npm packages
